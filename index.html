@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no" />
+  <meta name="theme-color" content="#111111" />
+  <title>Weapon Evolution</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="hud">
+    <div class="top">
+      <div class="stat"><span>HP</span><b id="hp">100</b></div>
+      <div class="stat"><span>WAVE</span><b id="wave">1</b></div>
+      <div class="stat"><span>LEVEL</span><b id="level">1</b></div>
+      <div class="stat"><span>KILLS</span><b id="kills">0</b></div>
+    </div>
+    <div id="crosshair">+</div>
+    <div id="weapon-card"><div id="weapon-name">Rust Pistol</div><div id="ammo">12 / ∞</div></div>
+    <div id="xp-wrap"><div id="xp-bar"></div></div>
+  </div>
+
+  <div id="upgrade-screen" class="hidden">
+    <div class="panel">
+      <div class="eyebrow">WEAPON EVOLUTION</div>
+      <h1>Choose a mutation</h1>
+      <div id="upgrade-options"></div>
+    </div>
+  </div>
+
+  <div id="gameover" class="hidden">
+    <div class="panel compact">
+      <div class="eyebrow">RUN ENDED</div>
+      <h1>Weapon destroyed.</h1>
+      <p id="run-stats"></p>
+      <button id="restart">Restart Run</button>
+    </div>
+  </div>
+
+  <div id="desktop-hint">WASD move · Mouse aim · Click shoot · R reload</div>
+
+  <div id="mobile-controls">
+    <div id="stick-base"><div id="stick-knob"></div></div>
+    <button id="fire-btn">FIRE</button>
+    <button id="reload-btn">R</button>
+  </div>
+
+  <script type="module" src="game.js"></script>
+</body>
+</html>
