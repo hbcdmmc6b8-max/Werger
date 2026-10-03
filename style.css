@@ -1,0 +1,43 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; width: 100%; height: 100%; overflow: hidden; background: #0a0a0a; font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; color: white; touch-action: none; }
+canvas { display: block; width: 100%; height: 100%; }
+#hud { position: fixed; inset: 0; pointer-events: none; z-index: 5; }
+.top { display: flex; gap: 8px; padding: max(10px, env(safe-area-inset-top)) 12px 0; justify-content: center; flex-wrap: wrap; }
+.stat { min-width: 74px; padding: 8px 12px; border: 1px solid rgba(255,255,255,.14); background: rgba(0,0,0,.45); backdrop-filter: blur(10px); border-radius: 12px; display: flex; gap: 8px; align-items: baseline; justify-content: center; }
+.stat span { font-size: 10px; opacity: .55; letter-spacing: .12em; }
+.stat b { font-size: 16px; }
+#crosshair { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); font-size: 28px; font-weight: 300; text-shadow: 0 0 12px rgba(255,255,255,.9); }
+#weapon-card { position: absolute; right: 14px; bottom: max(18px, env(safe-area-inset-bottom)); min-width: 180px; text-align: right; padding: 10px 12px; border-radius: 12px; background: rgba(0,0,0,.4); border: 1px solid rgba(255,255,255,.12); }
+#weapon-name { font-weight: 800; font-size: 15px; }
+#ammo { margin-top: 2px; opacity: .72; font-size: 13px; }
+#xp-wrap { position: absolute; left: 50%; transform: translateX(-50%); bottom: max(12px, env(safe-area-inset-bottom)); width: min(46vw, 420px); height: 8px; border-radius: 999px; overflow: hidden; background: rgba(255,255,255,.12); }
+#xp-bar { width: 0%; height: 100%; background: white; transition: width .15s ease; }
+#desktop-hint { position: fixed; z-index: 4; left: 12px; bottom: 14px; opacity: .45; font-size: 12px; pointer-events: none; }
+.hidden { display: none !important; }
+#upgrade-screen, #gameover { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; background: rgba(0,0,0,.68); backdrop-filter: blur(12px); padding: 18px; }
+.panel { width: min(900px, 100%); padding: 24px; border-radius: 22px; border: 1px solid rgba(255,255,255,.15); background: rgba(16,16,16,.94); box-shadow: 0 24px 80px rgba(0,0,0,.55); }
+.panel.compact { width: min(440px, 100%); text-align: center; }
+.eyebrow { font-size: 11px; letter-spacing: .2em; opacity: .55; font-weight: 800; }
+h1 { margin: 8px 0 20px; font-size: clamp(30px, 7vw, 58px); line-height: .95; }
+#upgrade-options { display: grid; grid-template-columns: repeat(3,1fr); gap: 12px; }
+.upgrade { appearance: none; color: white; text-align: left; border: 1px solid rgba(255,255,255,.12); background: rgba(255,255,255,.05); border-radius: 18px; padding: 18px; min-height: 190px; cursor: pointer; }
+.upgrade:hover, .upgrade:active { background: rgba(255,255,255,.1); transform: translateY(-2px); }
+.upgrade .rarity { font-size: 11px; opacity: .55; letter-spacing: .14em; font-weight: 900; }
+.upgrade h3 { margin: 10px 0 8px; font-size: 22px; }
+.upgrade p { margin: 0; line-height: 1.35; opacity: .74; font-size: 14px; }
+button#restart { border: 0; border-radius: 12px; padding: 13px 20px; font-weight: 900; font-size: 16px; cursor: pointer; }
+#mobile-controls { display: none; position: fixed; inset: 0; z-index: 10; pointer-events: none; }
+#stick-base { position: absolute; left: 26px; bottom: max(26px, env(safe-area-inset-bottom)); width: 122px; height: 122px; border-radius: 50%; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.14); pointer-events: auto; }
+#stick-knob { position: absolute; left: 50%; top: 50%; width: 54px; height: 54px; transform: translate(-50%,-50%); border-radius: 50%; background: rgba(255,255,255,.24); border: 1px solid rgba(255,255,255,.25); }
+#fire-btn, #reload-btn { position: absolute; pointer-events: auto; border-radius: 50%; border: 1px solid rgba(255,255,255,.18); color: white; background: rgba(255,255,255,.11); font-weight: 900; }
+#fire-btn { right: 28px; bottom: max(34px, env(safe-area-inset-bottom)); width: 96px; height: 96px; }
+#reload-btn { right: 118px; bottom: max(134px, calc(env(safe-area-inset-bottom) + 100px)); width: 54px; height: 54px; }
+@media (max-width: 900px), (pointer: coarse) {
+  #mobile-controls { display: block; }
+  #desktop-hint { display: none; }
+  #weapon-card { bottom: max(152px, calc(env(safe-area-inset-bottom) + 128px)); right: 12px; }
+  #xp-wrap { bottom: max(18px, env(safe-area-inset-bottom)); width: 42vw; }
+  #upgrade-options { grid-template-columns: 1fr; }
+  .upgrade { min-height: 0; }
+  .panel { max-height: 90vh; overflow: auto; }
+}
