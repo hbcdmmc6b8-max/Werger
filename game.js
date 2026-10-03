@@ -314,7 +314,7 @@ renderer.domElement.addEventListener("touchmove",e=>{
   for(const t of e.changedTouches){
     if(t.identifier===lookTouch && lastLook && !player.paused){
       player.yaw -= (t.clientX-lastLook.x)*.005;
-      player.pitch -= (t.clientY-lastLook.y)*.004;
+      player.pitch += (t.clientY-lastLook.y)*.004;
       player.pitch=Math.max(-1.15,Math.min(.9,player.pitch));
       lastLook={x:t.clientX,y:t.clientY};
     }
@@ -363,7 +363,7 @@ function animate(){
     const right=new THREE.Vector3(Math.cos(player.yaw),0,Math.sin(player.yaw));
     let mx=0,mz=0;
     if(keys.KeyW) mz+=1; if(keys.KeyS)mz-=1; if(keys.KeyD)mx+=1; if(keys.KeyA)mx-=1;
-    mx += stick.x; mz += -stick.y;
+    mx += stick.x; mz += stick.y;
     const move=fwd.multiplyScalar(mz).add(right.multiplyScalar(mx));
     if(move.lengthSq()>1) move.normalize();
     player.pos.addScaledVector(move,player.speed*dt);
